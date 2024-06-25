@@ -1,22 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
-  
-    menuToggle.addEventListener("click", function () {
-      navLinks.classList.toggle("show-nav");
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
     });
   
     const shopNowBtn = document.getElementById("shopNowBtn");
     if (shopNowBtn) {
       shopNowBtn.addEventListener("click", () => {
-        window.location.href = "../pages/shopPage.html";
+        window.location.href = "../pages/shop.html";
       });
     }
   
     const productSearch = document.getElementById("productSearch");
   
     // Event listener for search input
-    productSearch.addEventListener("input", function () {
+    productSearch?.addEventListener("input", function () {
       const searchValue = productSearch.value.trim().toLowerCase();
   
       // Filter products based on search value
@@ -288,68 +288,6 @@ document.addEventListener("DOMContentLoaded", function () {
       productsContainer.innerHTML = "";
       populateProducts(0, loadedProductsCount);
     }
-  
-    const products = [
-      {
-        imgSrc:
-          "https://png.pngtree.com/png-vector/20230902/ourmid/pngtree-white-t-shirt-mockup-realistic-t-shirt-png-image_9906363.png",
-        altText: "Shop Women",
-        title: "Shop Women",
-        description: "Lorem ipsum dolor sit amet",
-      },
-      {
-        imgSrc:
-          "https://5.imimg.com/data5/RS/TD/MY-8637222/mens-designer-jacket-500x500.png",
-        altText: "Shop Men",
-        title: "Shop Men",
-        description: "Lorem ipsum dolor sit amet",
-      },
-      {
-        imgSrc: "https://www.candere.com/media/jewellery/images/C005496__1.jpeg",
-        altText: "Jewellery",
-        title: "Jewellery",
-        description: "Lorem ipsum dolor sit amet",
-      },
-      {
-        imgSrc:
-          "https://images.samsung.com/is/image/samsung/in-full-hd-tv-te50fa-ua43te50fakxxl-frontblack-231881877?$650_519_PNG$",
-        altText: "Electronics",
-        title: "Electronics",
-        description: "Lorem ipsum dolor sit amet",
-      },
-    ];
-  
-    const productSection = document.getElementById("product-section");
-  
-    if (productSection) {
-      products.forEach((product) => {
-        console.log("Creating product:", product); // Debugging log
-        const productDiv = document.createElement("div");
-        productDiv.className = "product";
-  
-        const img = document.createElement("img");
-        img.src = product.imgSrc;
-        img.alt = product.altText;
-  
-        const productInfo = document.createElement("div");
-        productInfo.className = "product-info";
-  
-        const h3 = document.createElement("h3");
-        h3.textContent = product.title;
-  
-        const p = document.createElement("p");
-        p.textContent = product.description;
-  
-        productInfo.appendChild(h3);
-        productInfo.appendChild(p);
-  
-        productDiv.appendChild(img);
-        productDiv.appendChild(productInfo);
-  
-        productSection.appendChild(productDiv);
-      });
-    } else {
-      console.error("Product section not found");
-    }
+
   });
   
