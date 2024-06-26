@@ -1,4 +1,3 @@
-/* styles.css */
 
 body {
   font-family: sans-serif;
@@ -14,7 +13,7 @@ header {
 
 .container {
   display: flex;
-  justify-content: space-between; /* Changed to space-between */
+  justify-content: space-between; 
   align-items: center;
 }
 
@@ -216,9 +215,9 @@ nav {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 50%; /* Adjust height as needed */
+    height: 50%; 
     background: linear-gradient(to top, rgba(255, 255, 255, 0.8), transparent);
-    backdrop-filter: blur(1px); /* Adjust blur intensity */
+    backdrop-filter: blur(1px); 
     z-index: 1;
   }
 
@@ -629,10 +628,8 @@ nav {
     padding: 4.5%;
     position: relative;
     margin-top: -15px;
-    /* Negative margin to merge with the image */
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.8);
-    /* Slight transparency for effect */
   }
 
   .rightContentSub span {
@@ -674,13 +671,9 @@ nav {
 
 .productList img {
   width: 200px;
-  /* Set a static width */
   height: 200px;
-  /* Set a static height */
   object-fit: cover;
-  /* Ensure the image covers the area without stretching */
   margin-bottom: 10px;
-  /* Add some spacing below the image */
 }
 
 .productList h3 {
@@ -699,7 +692,6 @@ nav {
 @media (max-width: 1024px) {
   .productList {
     width: calc(50% - 20px);
-    /* 2 products per row on medium screens */
   }
 }
 
@@ -716,7 +708,6 @@ nav {
 
   .productList {
     width: calc(50% - 10px);
-    /* 2 products per row on small screens */
   }
 
   .products-container {
@@ -725,9 +716,7 @@ nav {
 
   .productList img {
     width: 150px;
-    /* Adjust image size for smaller screens */
     height: 150px;
-    /* Adjust image size for smaller screens */
   }
 }
 
@@ -745,14 +734,11 @@ nav {
 
   .productList {
     width: 100%;
-    /* 1 product per row on extra small screens */
   }
 
   .productList img {
     width: 100px;
-    /* Adjust image size for extra small screens */
     height: 100px;
-    /* Adjust image size for extra small screens */
   }
 
   .product-list {
@@ -801,9 +787,7 @@ nav {
 @media (max-width: 768px) {
   .load-more {
     margin: 20px auto;
-    /* Adjust margin to center the button horizontally */
     width: 80%;
-    /* Set a width to ensure button visibility */
   }
 }
 
@@ -819,32 +803,25 @@ nav {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  /* Ensure it's on top of other content */
 }
 
 @media (max-width: 768px) {
   .filters {
     display: none;
-    /* Hide the filters section on smaller screens */
   }
 
   .product-list {
     padding: 2% 5%;
-    /* Adjust padding for product list on smaller screens */
     justify-content: center;
-    /* Center align product list on smaller screens */
     gap: 0;
-    /* Remove gap between product list and products container */
   }
 
   .products-container {
     width: 100%;
-    /* Ensure products take full width on smaller screens */
   }
 
   .loading-overlay {
     top: 50%;
-    /* Center loading overlay vertically on smaller screens */
   }
 }
 
@@ -856,7 +833,6 @@ nav {
 
 .sortOptions select option:disabled {
   color: #aaa;
-  /* Grayed-out color for disabled options */
 }
 
 .productDet input {
