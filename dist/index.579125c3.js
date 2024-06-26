@@ -17,14 +17,14 @@ document.addEventListener("DOMContentLoaded", function() {
             return product.title.toLowerCase().includes(searchValue);
         });
         // Display filtered products
-        productsContainer.innerHTML = ""; // Clear existing products
+        productsContainer.innerHTML = "";
         populateFilteredProducts(filteredProducts);
     });
     const productsContainer = document.querySelector(".products-container");
-    let allProducts = []; // To store all products fetched
-    let allCategories = []; // To store all categories fetched
-    let loadedProductsCount = 0; // Track how many products are loaded initially
-    let totalProductsCount = 0; // Total number of products from the API
+    let allProducts = [];
+    let allCategories = [];
+    let loadedProductsCount = 0;
+    let totalProductsCount = 0;
     // Select loading overlay
     const loadingOverlay = document.querySelector(".loading-overlay");
     // Show loading overlay initially
@@ -32,14 +32,13 @@ document.addEventListener("DOMContentLoaded", function() {
     // Fetch products from the API
     fetch("https://fakestoreapi.com/products").then((response)=>response.json()).then((products)=>{
         loadingOverlay.style.display = "none";
-        allProducts = products; // Store all products
-        totalProductsCount = allProducts.length; // Store total products count
+        allProducts = products;
+        totalProductsCount = allProducts.length;
         // Call function to populate initial products (first 10)
         populateProducts(loadedProductsCount, 10);
-        loadedProductsCount += 10; // Increment loaded product count
+        loadedProductsCount += 10;
         updateTotalProductCount();
-        // Check if all products are loaded to hide Load More button
-        checkLoadMoreButton();
+    // checkLoadMoreButton();
     }).catch((error)=>{
         console.error("Error fetching products:", error);
         // Ensure loading overlay is hidden in case of error
@@ -48,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Fetch categories from the API
     fetch("https://fakestoreapi.com/products/categories").then((response)=>response.json()).then((categories)=>{
         allCategories = categories; // Store all categories
-        // Call function to populate categories initially
         populateCategories(categories);
     }).catch((error)=>console.error("Error fetching categories:", error));
     // Function to populate categories in the UI
@@ -88,28 +86,26 @@ document.addEventListener("DOMContentLoaded", function() {
             productsContainer.appendChild(productElement);
         });
         updateTotalProductCount();
-        // Check if all products are loaded to hide Load More button
         checkLoadMoreButton();
     }
     // Function to update products based on selected categories
     function updateProducts() {
-        loadingOverlay.style.display = "block"; // Show loading overlay
+        loadingOverlay.style.display = "block";
         const checkedCategories = Array.from(document.querySelectorAll(".category-item input:checked")).map((checkbox)=>checkbox.value);
         setTimeout(()=>{
             if (checkedCategories.length === 0) {
-                // If no categories are selected, show all products
-                productsContainer.innerHTML = ""; // Clear existing products
+                productsContainer.innerHTML = "";
                 populateProducts(0, loadedProductsCount);
             } else {
                 // Filter products based on selected categories
                 const filteredProducts = allProducts.filter((product)=>{
                     return checkedCategories.includes(product.category);
                 });
-                productsContainer.innerHTML = ""; // Clear existing products
+                productsContainer.innerHTML = "";
                 populateFilteredProducts(filteredProducts);
             }
-            loadingOverlay.style.display = "none"; // Hide loading overlay after updating products
-        }, 500); // Simulate some delay for demonstration
+            loadingOverlay.style.display = "none";
+        }, 500);
     }
     // Function to reset price range filter
     function resetPriceRangeFilter() {
@@ -141,19 +137,19 @@ document.addEventListener("DOMContentLoaded", function() {
         filterProductsByPrice(minPriceSlider.value, maxPriceSlider.value);
     }
     function filterProductsByPrice(minPrice, maxPrice) {
-        loadingOverlay.style.display = "block"; // Show loading overlay
+        loadingOverlay.style.display = "block";
         setTimeout(()=>{
             const filteredProducts = allProducts.filter((product)=>{
                 return product.price >= minPrice && product.price <= maxPrice;
             });
-            productsContainer.innerHTML = ""; // Clear existing products
+            productsContainer.innerHTML = "";
             populateFilteredProducts(filteredProducts);
-            loadingOverlay.style.display = "none"; // Hide loading overlay after updating products
-        }, 500); // Simulate some delay for demonstration
+            loadingOverlay.style.display = "none";
+        }, 500);
     }
     // Function to populate filtered products in the UI
     function populateFilteredProducts(filteredProducts) {
-        productsContainer.innerHTML = ""; // Clear existing products
+        productsContainer.innerHTML = "";
         filteredProducts.forEach((product)=>{
             const productElement = document.createElement("div");
             productElement.className = "productList";
@@ -165,12 +161,11 @@ document.addEventListener("DOMContentLoaded", function() {
             productsContainer.appendChild(productElement);
         });
         updateTotalProductCount();
-        // Check if all products are loaded to hide Load More button
-        checkLoadMoreButton();
+    // checkLoadMoreButton();
     }
-    // Function to check if all products are loaded and hide Load More button if so
     function checkLoadMoreButton() {
         if (loadedProductsCount >= totalProductsCount) {
+            console.log(loadedProductsCount, totalProductsCount, "working");
             const loadMoreBtn = document.querySelector(".load-more button");
             if (loadMoreBtn) loadMoreBtn.style.display = "none";
         }
@@ -185,16 +180,16 @@ document.addEventListener("DOMContentLoaded", function() {
     // Load more button functionality
     const loadMoreBtn = document.querySelector(".load-more button");
     if (loadMoreBtn) loadMoreBtn.addEventListener("click", ()=>{
-        loadingOverlay.style.display = "block"; // Show loading overlay
+        loadingOverlay.style.display = "block";
         const remainingProducts = totalProductsCount - loadedProductsCount;
         const nextBatch = remainingProducts >= 10 ? 10 : remainingProducts;
+        checkLoadMoreButton();
         setTimeout(()=>{
             populateProducts(loadedProductsCount, nextBatch);
             loadedProductsCount += nextBatch;
-            // Check if all products are loaded to hide Load More button
             checkLoadMoreButton();
-            loadingOverlay.style.display = "none"; // Hide loading overlay after loading more products
-        }, 500); // Simulate some delay for demonstration
+            loadingOverlay.style.display = "none";
+        }, 500);
     });
     // Sort dropdown functionality
     const sortDropdown = document.querySelector(".sortOptions select");

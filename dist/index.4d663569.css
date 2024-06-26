@@ -750,7 +750,9 @@ nav {
 
 .load-more {
   text-align: center;
+  justify-content: center;
   margin: 10px 0;
+  display: flex;
 }
 
 .load-more button {
@@ -761,6 +763,7 @@ nav {
   border: #0000;
   border-radius: 4px;
   padding: 10px 60px;
+  display: block;
 }
 
 @media (width <= 768px) {

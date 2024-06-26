@@ -783,9 +783,12 @@ nav {
 .load-more {
   text-align: center;
   margin: 10px 0px;
+  display: flex;
+  justify-content: center;
 }
 
 .load-more button {
+  display: block;
   padding: 10px 60px;
   background-color: #007bff;
   border: transparent;
